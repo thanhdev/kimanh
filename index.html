@@ -7,6 +7,7 @@
     <META NAME="Author" CONTENT="">
     <META NAME="Keywords" CONTENT="">
     <META NAME="Description" CONTENT="">
+	<meta name="google" content="notranslate">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -18,8 +19,16 @@
             margin: 0;
             background: #000;
 			font: 36px Arial, sans-serif;
-			animation: 3s ease 0s infinite pulse;
         }
+		#canvasContainer {
+		    height: 100%;
+            padding: 0;
+            margin: 0;
+            background: #000;
+			font: 36px Arial, sans-serif;
+			animation: 3s ease 0s infinite pulse;
+
+		}
         canvas {
             position: absolute;
             width: 100%;
@@ -32,7 +41,7 @@
 		  color: white;
 		  position: absolute;
 		  width: 100%;
-		  height: 94%;
+		  height: 100%;
 		  display: flex;
 		  justify-content: center;
 		  align-items: center;
@@ -59,6 +68,11 @@
 </HEAD>
 
 <BODY>
+<div id="container" class="cover" style="position: inherit;">
+  <div id="content" >
+    Click!
+  </div>
+</div>
 <audio style="display: none;" controls autoplay>
   <source src="bgm2.mp3" type="audio/mpeg">
 </audio>
@@ -68,12 +82,14 @@
     I love my life! Because my life is you! 
   </div>
 </div>
-<div id="container">
+<div id="container" style="height: 94%;">
   <div id="content">
     Kim Anh
   </div>
-</div>    
-<canvas id="pinkboard"></canvas>
+</div>   
+<div id="canvasContainer"> 
+	<canvas id="pinkboard"></canvas>
+</div>
     <script>
         /*
         * Settings
@@ -331,7 +347,8 @@
 
         })(document.getElementById('pinkboard'));
 		
-		document.body.addEventListener("mousemove", function () {
+		document.body.addEventListener("click", function () {
+			$('.cover').remove();
 			$('.sub').fadeIn(2000);
 			$(".sub").fadeOut(2000);
 			setTimeout(function() {
@@ -340,8 +357,6 @@
 			// document.querySelector(".sub").style.display = 'inline-flex';
 			document.querySelector('audio').play();
 		});
-		
-		// $(".sub").fadeOut(1000);
 
     </script>
 </BODY>
